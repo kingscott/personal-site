@@ -14,16 +14,20 @@ class FolderSelector extends Component {
   }
 
   render() {
-    let availableFolders = this.props.data;
+    let { data: availableFolders, selectedFolder, setSelectedFolder } = this.props;
     return (
       <div className="flex flex-col items-end">
         {availableFolders.length > 0 && (
           availableFolders.map((f, i) => {
             let formattedName = f.split('-').join(' ');
             return (
-              <div key={i} className="text-base text-right capitalize underline my-2">
+              <a
+                key={i}
+                onClick={() => setSelectedFolder(f)}
+                className={`block transform transition-colors duration-200 hover:text-gray-900 text-base text-right capitalize cursor-pointer my-2 ${selectedFolder === f ? 'text-gray-900' : 'text-gray-500'}`}
+              >
                 {formattedName}
-              </div>
+              </a>
             );
           })
         )}

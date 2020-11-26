@@ -1,11 +1,11 @@
 import AWS from 'aws-sdk';
 
+const BUCKET_NAME = 'scottkingphotos';
+
 AWS.config.region = 'ca-central-1';
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'ca-central-1:1b0ee55b-730f-473f-93c9-12abc39a2946',
 });
-
-const BUCKET_NAME = 'scottkingphotos';
 
 class awsApi {
   #s3 = new AWS.S3({
@@ -36,16 +36,20 @@ class awsApi {
     let photoKey = `${encodeURIComponent(folderName)}/`;
 
     return new Promise((resolve, reject) => {
-      this.#s3.listObjects({Prefix: photoKey}, (err, data) => {
+      return this.#s3.listObjects({Prefix: photoKey}, (err, data) => {
         if (err) {
           // TODO
         } else {
-          let bucketUrl = `${this.request.httpRequest.endpoint.href}/`;
+          let bucketUrl = `https://${BUCKET_NAME}.s3.${AWS.config.region}.amazonaws.com`;
 
           // Return all the image URLs
-          let images = data.Contents.map(image => {
-            return `${bucketUrl}${encodeURIComponent(image.Key)}`;
-          });
+          let images = data.Contents
+            .filter(e => e.Key.includes('.png'))
+            .map(image => {
+              return `${bucketUrl}/${encodeURIComponent(image.Key)}`;
+            });
+
+          resolve(images);
         }
       });
     });
