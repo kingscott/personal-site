@@ -2,7 +2,7 @@ import AWS from 'aws-sdk';
 
 AWS.config.region = 'ca-central-1';
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'ca-central-1:6b314d80-0f3d-4107-bcab-a7f6375fe6db',
+    IdentityPoolId: 'ca-central-1:1b0ee55b-730f-473f-93c9-12abc39a2946',
 });
 
 const BUCKET_NAME = 'scottkingphotos';
