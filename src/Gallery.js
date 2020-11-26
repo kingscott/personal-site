@@ -26,9 +26,6 @@ const Gallery = () => {
       </div>
     </div>
   );
-
-  // <Folders />
-  // <Images />
 };
 
 export default Gallery;
