@@ -1,23 +1,21 @@
 'use strict';
 
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from './Image';
 import awsApi from 'Utilities/aws';
 
-const ImageLayout = props => {
-  let { data: images, setData, selectedFolder } = props;
-
+const ImageLayout = ({ data, setData, currentFolder }) => {
   useEffect(async () => {
-    if (selectedFolder) {
-      let images = await awsApi.getImagesInFolder(selectedFolder);
+    if (currentFolder) {
+      let images = await awsApi.getImagesInFolder(currentFolder);
       setData(images);
     }
-  }, [selectedFolder]);
+  }, [currentFolder]);
 
   return (
     <div>
-      {images.length && selectedFolder !== null > 0 ? (
-        images.map((imgSrc, i) => {
+      {data.length > 0 ? (
+        data.map((imgSrc, i) => {
           return (
             <Image
               key={i}

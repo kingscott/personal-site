@@ -1,47 +1,27 @@
 'use strict';
 
-import React, { Component, useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import awsApi from 'Utilities/aws';
 
-class FolderSelector extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  async componentDidMount() {
-    let availableFolders = await awsApi.listAvailableFolders();
-    this.props.setData(availableFolders);
-  }
-
-  render() {
-    let { data: availableFolders, selectedFolder, setSelectedFolder } = this.props;
-    return (
-      <div className="flex flex-col items-end">
-        {availableFolders.length > 0 && (
-          availableFolders.map((f, i) => {
-            let formattedName = f.split('-').join(' ');
-            return (
-              <a
-                key={i}
-                onClick={() => setSelectedFolder(f)}
-                className={`block transform transition-colors duration-200 hover:text-gray-900 text-base text-right capitalize cursor-pointer my-2 ${selectedFolder === f ? 'text-gray-900' : 'text-gray-500'}`}
-              >
-                {formattedName}
-              </a>
-            );
-          })
-        )}
-      </div>
-    );
-  }
-
+const FolderSelector = ({ data, currentFolder }) => {
+  return (
+    <div className="flex flex-col items-end">
+      {data && data.length > 0 && (
+        data.map((f, i) => {
+          let formattedName = f.split('-').join(' ');
+          return (
+            <div
+              key={i}
+              className={`block transform transition-colors duration-200 hover:text-gray-900 ${currentFolder === f ? 'text-gray-900' : 'text-gray-500'} text-base text-right capitalize cursor-pointer my-2`}
+            >
+              <Link to={`/${f}`}>{formattedName}</Link>
+            </div>
+          );
+        })
+      )}
+    </div>
+  );
 };
 
 export default FolderSelector;
-
-        // <div className="text-base text-right underline my-2">{'Colour'}</div>
-        // <div className="text-base text-right underline my-2">{'Black and white'}</div>
-        // <div className="text-base text-right underline my-2">{'u00dok_1'}</div>
-        // <div className="text-base text-right underline my-2">{'Painting Saskatchewan'}</div>
-        // <div className="text-base text-right underline my-2">{'Big Fucking Rocks'}</div>
-        // <div className="text-base text-right underline my-2">{'Waterloo Regional Space Program'}</div>

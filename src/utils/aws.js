@@ -49,6 +49,7 @@ class awsApi {
               return `${bucketUrl}/${encodeURIComponent(image.Key)}`;
             });
 
+          console.log(images);
           resolve(images);
         }
       });
