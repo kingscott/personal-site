@@ -1,16 +1,15 @@
 import React from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 
 import Gallery from './Gallery';
-import awsApi from 'Utilities/aws';
 require('../assets/styles/index.scss');
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter>
       <Route exact path="/" component={Gallery} />
       <Route path="/:folderName" component={Gallery} />
-    </Router>
+    </HashRouter>
   );
 };
 
