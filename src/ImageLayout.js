@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { useEffect, useState } from 'react';
 import Image from './Image';
 import awsApi from 'Utilities/aws';

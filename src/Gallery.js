@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component, useState, useEffect } from 'react';
 import FolderSelector from './FolderSelector';
 import ImageLayout from './ImageLayout';
@@ -7,6 +5,7 @@ import Nameplate from './Nameplate';
 import awsApi from 'Utilities/aws';
 
 const Gallery = ({ match, ...props }) => {
+  // Grab the name of the selected folder on the
   const { params: { folderName } } = match;
 
   // Handles folder logic
@@ -15,7 +14,7 @@ const Gallery = ({ match, ...props }) => {
   // Handles image state
   const [images, setImages] = useState([]);
 
-  // Fetch folders
+  // Fetch folders on page load
   useEffect(async () => {
     let availableFolders = await awsApi.listAvailableFolders();
     setAvailableFolders(availableFolders);

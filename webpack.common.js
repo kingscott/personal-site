@@ -1,14 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './index.js',
-  mode: 'development',
+  entry: {
+    app: './index.js',
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         loader: 'babel-loader',
       },
       {
@@ -49,11 +51,27 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
-    publicPath: '/dist/',
-    filename: 'bundle.js',
+    filename: '[name].js',
+    publicPath: '/dist',
   },
-  devServer: {
-    port: 8000,
-    publicPath: "http://localhost:8000/dist/",
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    },
+    runtimeChunk: true,
   },
 };
