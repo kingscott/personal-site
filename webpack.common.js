@@ -4,9 +4,7 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: './index.js',
-  },
+  entry: './index.js',
   module: {
     rules: [
       {
@@ -16,6 +14,7 @@ module.exports = {
       },
       {
         test: /\.?scss$/,
+        exclude: /(node_modules)/,
         use: [
           'style-loader',
           'css-loader',
@@ -44,9 +43,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["*", ".js"],
     alias: {
-      'util': 'util',
       Utilities: path.resolve(__dirname, 'src/utils/'),
     },
   },

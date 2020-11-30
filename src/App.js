@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, HashRouter } from 'react-router-dom';
 
 import Gallery from './Gallery';
-require('../assets/styles/index.scss');
+import '../assets/styles/index.scss';
 
 const App = () => {
   return (

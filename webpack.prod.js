@@ -7,10 +7,35 @@ const { merge } = require('webpack-merge');
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: 'source-map',
+  // devtool: 'source-map',
   plugins: [
     new MiniCssExtractPlugin(),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '',
+            },
+          },
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                config: path.resolve(__dirname, 'postcss.config.js'),
+              },
+            },
+          }
+        ],
+      },
+    ],
+  },
   output: {
     filename: '[name].[contenthash].js',
   },
@@ -22,6 +47,5 @@ module.exports = merge(common, {
         extractComments: true,
       }),
     ],
-    removeEmptyChunks: true,
   },
 });
