@@ -13,10 +13,8 @@ module.exports = merge(common, {
   ],
   output: {
     filename: '[name].[contenthash].js',
-    chunkFilename: '[name].[chunkhash].bundle.js',
   },
   optimization: {
-    mergeDuplicateChunks: true,
     minimize: true,
     minimizer: [
       new TerserPlugin({
