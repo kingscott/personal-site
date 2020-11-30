@@ -53,7 +53,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist/'),
     filename: '[name].js',
-    publicPath: path.resolve(__dirname, 'dist/'),
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -64,19 +63,7 @@ module.exports = {
   ],
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          reuseExistingChunk: true
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
+      chunks: 'all',
     },
-    runtimeChunk: true,
   },
 };
