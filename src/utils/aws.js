@@ -42,9 +42,11 @@ class awsApi {
         } else {
           let bucketUrl = `https://${BUCKET_NAME}.s3.${AWS.config.region}.amazonaws.com`;
 
+          console.log(data.Contents);
+
           // Return all the image URLs
           let images = data.Contents
-            .filter(e => e.Key.includes('.png'))
+            .filter(e => e.Key.includes('.png') || e.Key.includes('.jpg'))
             .map(image => {
               return `${bucketUrl}/${encodeURIComponent(image.Key)}`;
             });

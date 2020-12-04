@@ -11,8 +11,8 @@ const ImageLayout = ({ data, setData, currentFolder }) => {
   }, [currentFolder]);
 
   return (
-    <div>
-      {data.length > 0 ? (
+    <div className="flex flex-col items-center">
+      {data.length > 0 && (
         data.map((imgSrc, i) => {
           return (
             <Image
@@ -21,8 +21,6 @@ const ImageLayout = ({ data, setData, currentFolder }) => {
             />
           );
         })
-      ) : (
-        <div>{'No images in the selected folder.'}</div>
       )}
     </div>
   );

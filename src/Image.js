@@ -1,7 +1,10 @@
+import React from 'react';
+
 const Image = props => {
-  // Only specify the first to not have margin on top
   return (
-    <img src={props.src} alt=""/>
+    <div className="image-container w-3/5 my-6">
+      <img src={props.src} alt="" />
+    </div>
   );
 };
 

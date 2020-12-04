@@ -24,3 +24,13 @@ body {
   font-size: 2em;
   text-shadow: 1px 0px 0px #000000;
 }
+
+.image-container {
+  &:first-child {
+    margin-top: 0px;
+  }
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
