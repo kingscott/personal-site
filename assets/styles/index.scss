@@ -34,3 +34,13 @@ body {
     margin-bottom: 0px;
   }
 }
+
+.font-name-container {
+  &:first-child {
+    margin-left: 0px;
+  }
+
+  &:last-child {
+    margin-right: 0px;
+  }
+}
