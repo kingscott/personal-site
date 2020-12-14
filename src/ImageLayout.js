@@ -11,7 +11,7 @@ const ImageLayout = ({ data, setData, currentFolder }) => {
   }, [currentFolder]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-5/6 md:w-3/5">
       {data.length > 0 && (
         data.map((imgSrc, i) => {
           return (
