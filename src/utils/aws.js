@@ -44,7 +44,7 @@ class awsApi {
 
           // Return all the image URLs
           let images = data.Contents
-            .filter(e => e.Key.includes('.png') || e.Key.includes('.jpg'))
+            .filter(e => e.Key.includes('.png') || e.Key.includes('.jpg') || e.Key.includes('.JPG'))
             .map(image => {
               return `${bucketUrl}/${encodeURIComponent(image.Key)}`;
             });
