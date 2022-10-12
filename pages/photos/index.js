@@ -1,36 +1,14 @@
 import Head from 'next/head';
-import { getLayout } from '../components/sidebar';
+import Link from 'next/link';
+import { getLayout } from '../../components/sidebar';
+import s3 from '../../lib/aws';
+import { getImageFolders } from '../../lib/getImageFolders';
 
-export async function getStaticProps() {
-  return {
-    props: {
-      menuItems: [
-        {
-          href: 'mailto:me@kingscott.ca?subject=👋',
-          name: 'Email',
-        },
-        {
-          href: 'https://github.com/kingscott',
-          name: 'GitHub',    
-        },
-        {
-          href: 'https://linkedin.com/in/kingscott22',
-          name: 'LinkedIn'
-        },
-        {
-          path: '/photos',
-          name: 'Photography'
-        }
-      ]
-    }
-   };
-}
-
-export default function Home() {
+export default function Photos() {
   return (
     <div className='container mx-auto'>
       <Head>
-        <title>Scott King</title>
+        <title>Scott King Photography</title>
         <meta name="description" content="Photography works by Scott King" />
         {/* TODO update favicon */}
         {/* <link rel="icon" href="/favicon.ico" /> */}
@@ -51,7 +29,17 @@ export default function Home() {
       </main>
     </div>
   )
-};
+}
 
-Home.getLayout = getLayout;
+export async function getStaticProps() {
+  let res = await getImageFolders();
 
+  return {
+    props: {
+      menuItems: res?.folders,
+      error: res?.error,
+    }
+  };
+}
+
+Photos.getLayout = getLayout;
