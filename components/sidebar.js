@@ -6,7 +6,7 @@ export const Sidebar = ({ children, menuItems }) => {
 
   return menuItems?.length > 0 && (
     <div className='flex xs:flex-col md:flex-row lg:flex-row xs:justify-center md:justify-between m-4 overflow-hidden'>
-      <div className='flex flex-col xs:items-center md:items-baseline mr-2 xs:mb-2 xs:w-full md:w-2/5 max-w-xs'>
+      <div className='flex flex-col xs:items-center md:items-baseline xs:mb-2 md:mr-2  xs:w-full md:w-2/5 md:max-w-xs'>
         <Link href="/">Scott King</Link>
         {menuItems.map((e, i) => {
           let isFolderSelected = e.path === router.asPath;
