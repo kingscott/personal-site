@@ -31,27 +31,26 @@ export async function getServerSideProps(context) {
 
   let images = await new Promise((resolve, reject) => {
     s3.listObjects({Prefix: photoKey}, (err, data) => {
-        if (err) {
-          reject({ error: err });
-        } else {
-            let bucketUrl = `https://${s3.config.params.Bucket}.s3.${s3.config.region}.amazonaws.com`;
+      if (err) {
+        reject({ error: err });
+      } else {
+        let bucketUrl = `https://${s3.config.params.Bucket}.s3.${s3.config.region}.amazonaws.com`;
 
-            // Return all the image URLs
-            let images = data.Contents
-              .filter(e => e.Key.includes('.png') || e.Key.includes('.jpg') || e.Key.includes('.JPG'))
-              .map(image => {
-                return `${bucketUrl}/${encodeURIComponent(image.Key)}`;
-              });
+        // Return all the image URLs
+        let images = data.Contents
+          .filter(e => e.Key.includes('.png') || e.Key.includes('.jpg') || e.Key.includes('.JPG'))
+          .map(image => {
+            return `${bucketUrl}/${encodeURIComponent(image.Key)}`;
+          });
 
-          resolve(images);
-        }
+        resolve(images);
+      }
     });
   });
 
   return {
     props: {
-      images
+      images,
     }
   }
-}
-
+};
