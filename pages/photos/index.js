@@ -1,45 +1,55 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { getLayout } from '../../components/sidebar';
 import s3 from '../../lib/aws';
-import { getImageFolders } from '../../lib/getImageFolders';
+import Favicon from "../../components/favicon";
 
-export default function Photos() {
-  return (
-    <div className='container mx-auto'>
+export default function Photos({ folders }) {
+  return folders?.length > 0 && (
+    <>
       <Head>
-        <title>Scott King Photography</title>
+        <title>SK - Photography</title>
         <meta name="description" content="Photography works by Scott King" />
-        {/* TODO update favicon */}
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <Favicon />
       </Head>
 
-      <main>        
-            {/* {data.map((e, i) => {
-              return (
-                <div key={`folder-${i}`} className={`block transform transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white text-base capitalize cursor-pointer`}>
-                  <Link href={{
-                    pathname: `/photos/${e.path}`,
-                  }}>
-                    <h2 className='capitalize'>{e.name}</h2>
-                  </Link>
-                </div>    
-              )
-            })} */}
+      <main>
+        {folders.map((e, i) => {
+          return (
+            <div key={`folder-${i}`} className={`block transform transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white text-base capitalize cursor-pointer`}>
+              <Link href={{
+                pathname: `${e.path}`,
+              }}>
+                <h2 className='capitalize'>{e.name}</h2>
+              </Link>
+            </div>
+          )
+        })}
       </main>
-    </div>
+    </>
   )
 }
 
 export async function getStaticProps() {
-  let res = await getImageFolders();
+  let res = await new Promise((resolve, reject) => {
+    s3.listObjects({Delimiter: '/'}, (err, data) => {
+      if (err) {
+        reject({ folders: null, error: err });
+      } else {
+        let folders = data.CommonPrefixes.map(commonPrefix => {
+          let prefix = commonPrefix.Prefix.replace('/', '');
+          let folderName = decodeURIComponent(prefix);
+          let parsedFolderName = folderName.split('-').join(' ');
+          return { path: `/photos/${folderName}`, name: parsedFolderName };
+        });
+
+        resolve({ folders, error: null });
+      }
+    });
+  });
 
   return {
     props: {
-      menuItems: res?.folders,
-      error: res?.error,
+      folders: res?.folders,
     }
   };
 }
-
-Photos.getLayout = getLayout;

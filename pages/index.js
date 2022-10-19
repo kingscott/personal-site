@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getLayout } from '../components/sidebar';
+import Favicon from '../components/favicon';
 
 export async function getStaticProps() {
   return {
@@ -28,15 +28,14 @@ export async function getStaticProps() {
 
 export default function Home() {
   return (
-    <div className='container mx-auto'>
+    <div className=''>
       <Head>
         <title>Scott King</title>
         <meta name="description" content="Photography works by Scott King" />
-        {/* TODO update favicon */}
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <Favicon />
       </Head>
 
-      <main>        
+      <main>
             {/* {data.map((e, i) => {
               return (
                 <div key={`folder-${i}`} className={`block transform transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white text-base capitalize cursor-pointer`}>
@@ -52,6 +51,3 @@ export default function Home() {
     </div>
   )
 };
-
-Home.getLayout = getLayout;
-
