@@ -23,9 +23,6 @@ export default function Contact() {
             <p>{'Otherwise, you can find me here:'}</p>
             <ul>
               <li>
-                <a href='https://mstdn.ca/@kingscott' className='underline' target='_blank' rel='noreferrer'>Mastodon</a>
-              </li>
-              <li>
                 <a href='https://github.com/kingscott' className='underline' target='_blank' rel='noreferrer'>GitHub</a>
               </li>
               <li>
