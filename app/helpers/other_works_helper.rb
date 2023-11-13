@@ -1,0 +1,2 @@
+module OtherWorksHelper
+end
