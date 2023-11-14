@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: personal-site
+  password: <%= ENV["PERSONALSITE_DATABASE_PASSWORD"] %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: personalsite-dev
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: personalsite-test
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
+  database: personalsite-prod
+  username: personal-site
+  password: <%= ENV["PERSONALSITE_DATABASE_PASSWORD"] %>

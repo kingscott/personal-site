@@ -1,0 +1,24 @@
+<div class="flex items-center justify-between w-screen">
+  <div class="ml-4">
+    <%= image_tag "logo_light.svg", class: "h-16", alt: "Scott King logo" %>
+  </div>
+  <nav class="container">
+    <ul class="flex justify-end mr-4 space-x-8">
+      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+        <%= link_to "Home", root_path %>
+      </li>
+      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+        <%= link_to "Contact", contact_path %>
+      </li>
+      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+        <%= link_to "CV", url_for("/scott-king-cv.pdf") %>
+      </li>
+      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+        <%= link_to "Photography", photos_path %>
+      </li>
+      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+        <%= link_to "Other Works", other_works_path %>
+      </li>
+    </ul>
+  </nav>
+</div>

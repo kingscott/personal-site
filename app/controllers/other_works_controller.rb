@@ -1,0 +1,2 @@
+class OtherWorksController < ApplicationController
+end
