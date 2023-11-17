@@ -1,22 +1,33 @@
-<div class="flex items-center justify-between w-screen">
+<div class="bg-neutral-100 flex items-center justify-between relative w-screen" data-controller="menu">
   <div class="ml-4">
-    <%= image_tag "logo_light.svg", class: "h-16", alt: "Scott King logo" %>
+    <%= image_tag "logo_light.png", class: "h-16", alt: "Scott King logo" %>
   </div>
-  <nav class="container">
-    <ul class="flex justify-end mr-4 space-x-8">
-      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+  <div class="md:hidden xs:px-4 mr-4">
+    <button 
+      class="flex font-medium group/menu hover:bg-neutral-200 items-center px-4 py-2 ring-red-400 ring-1 rounded-full shadow-lg shadow-neutral-800/4 text-sm text-neutral-800"
+      data-action="click->menu#toggle"
+    >
+      Menu
+    </button>
+  </div>  
+  <nav class="fixed inset-x-4 md:block md:container md:relative md:top-0 origin-top top-20">
+    <ul 
+      class="bg-neutral-200 flex flex-col invisible opacity-0 p-4 rounded-md md:bg-neutral-100 md:flex md:flex-row md:justify-end md:mr-4 md:opacity-100 md:space-x-8 md:space-y-0 md:top-0 md:visible space-y-4 transition-[opacity] ease-in-out duration-500" 
+      data-menu-target="mobilemenu"
+    >
+      <li class="duration-200 flex hover:text-neutral-900 justify-center text-base transform transition-colors">
         <%= link_to "Home", root_path %>
       </li>
-      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+      <li class="duration-200 flex hover:text-neutral-900 justify-center text-base transform transition-colors">
         <%= link_to "Contact", contact_path %>
       </li>
-      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+      <li class="duration-200 flex hover:text-neutral-900 justify-center text-base transform transition-colors">
         <%= link_to "CV", url_for("/scott-king-cv.pdf") %>
       </li>
-      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+      <li class="duration-200 flex hover:text-neutral-900 justify-center text-base transform transition-colors">
         <%= link_to "Photography", photos_path %>
       </li>
-      <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+      <li class="duration-200 flex hover:text-neutral-900 justify-center text-base transform transition-colors">
         <%= link_to "Other Works", other_works_path %>
       </li>
     </ul>
