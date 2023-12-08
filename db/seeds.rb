@@ -10,12 +10,12 @@
 
 # Seed data for Photo series
 series_data = [
-  { title: "u00dok_1", author: "Scott King", release: Date.new(2019), designation: "photo", location: "", file_path: "" },
-  { title: "Waterloo Regional Space Program", author: "Scott King", release: Date.new(2019), designation: "photo", location: "", file_path: "" },
-  { title: "Painting Saskatchewan", author: "Scott King", release: Date.new(2020), designation: "photo", location: "", file_path: "" },
-  { title: "British Columbia by Train", author: "Scott King", release: Date.new(2021), designation: "photo", location: "", file_path: "" },
-  { title: "Barry Lorne: Symbols", author: "Scott King",  release: Date.new(2021), designation: "photo", location: "", file_path: "" },
-  { title: "Barry Lorne: Paintings", author: "Scott King", release: Date.new(2021), designation: "photo", location: "", file_path: "" },
+  { title: "u00dok_1", author: "Scott King", release: Date.new(2019), designation: "photo", location: "", file_path: "u00dok1" },
+  { title: "Waterloo Regional Space Program", author: "Scott King", release: Date.new(2019), designation: "photo", location: "", file_path: "wrsp" },
+  { title: "Painting Saskatchewan", author: "Scott King", release: Date.new(2020), designation: "photo", location: "", file_path: "saskatchewan" },
+  { title: "British Columbia by Train", author: "Scott King", release: Date.new(2021), designation: "photo", location: "", file_path: "bc_train" },
+  { title: "Barry Lorne: Symbols", author: "Scott King",  release: Date.new(2021), designation: "photo", location: "", file_path: "lorne_symbols" },
+  { title: "Barry Lorne: Paintings", author: "Scott King", release: Date.new(2021), designation: "photo", location: "", file_path: "lorne_paintings" },
 ]
 
 begin
