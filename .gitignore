@@ -3,3 +3,6 @@
 log/
 config/master.key
 tmp/
+.env
+cert.pem
+.idea/
