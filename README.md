@@ -1,24 +1,10 @@
-# README
+# Scott's personal site
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Seriously, it's just a personal site. I aim to include creative and professional work, alongside relevant details that
+I find part of me.  
 
-Things you may want to cover:
+## Help for me
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Starting server locally: `foreman start -f Procfile.dev`
+- Use bundler for packages
+- Use kamal for deployment 
