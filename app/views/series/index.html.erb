@@ -15,12 +15,22 @@
   </div>
 
   <div class="mb-4">
-    <p class="font-bold">Print</p>
-    <p>Coming soon</p>
+    <p class="font-bold">Recording</p>
+    <div>
+      <% when_present(@recording_list) do |recording_list| %>
+        <ul>
+          <% recording_list.each do |recording| %>
+            <li class="duration-200 hover:text-neutral-900 text-base transform transition-colors">
+              <%= link_to recording.title, recording.location %>
+            </li>
+          <% end %>
+        </ul> 
+      <% end %>
+    </div>
   </div>
 
   <div>
-    <p class="font-bold">Recording</p>
+    <p class="font-bold">Print</p>
     <p>Coming soon</p>
   </div>
 </div>
