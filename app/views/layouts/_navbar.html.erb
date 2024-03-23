@@ -25,7 +25,7 @@
         <%= link_to "Creative Work", series_index_path %>
       </li>
       <li class="duration-200 flex hover:text-neutral-900 justify-center text-base transform transition-colors">
-        <%= link_to "CV", url_for("/scott-king-cv.pdf") %>
+        <%= link_to "CV", asset_url("scott-king-cv.pdf", skip_pipeline: true) %>
       </li>            
     </ul>
   </nav>

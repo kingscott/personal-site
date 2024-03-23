@@ -1,6 +1,7 @@
 class SeriesController < ApplicationController
   def index
     @photo_series_list = Series.photo_series_list
+    @recording_list = Series.recordings_list
   end
 
   def show
