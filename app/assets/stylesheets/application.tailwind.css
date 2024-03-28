@@ -2,4 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/*  
+ * Adam, Jonathon, Brandon, and Robin, if you happen to land here...
+ * I've read through this issue, among other things, and while, yes I could have decided to implement a custom utility,
+ * I decided to stick to the defined API. It's well thought out, and generally I don't like writing my own net-new 
+ * utilities for one-off situations (in context of this website).  
+ *
+ * Issue referenced: https://github.com/tailwindlabs/tailwindcss/discussions/3521
+ */
+
+#cardContainer {
+    perspective: 600px;
+}
+
+#card {
+    transform-style: preserve-3d;
+}
+
+#faceFront,
+#faceBack {
+    backface-visibility: hidden;
+    -webkit-backface-visbility: hidden;
+}
+
+#card:hover {
+    transform: rotateY(180deg); 
+}
+
+#faceBack {
+    transform: rotateY(180deg);
+}
 
