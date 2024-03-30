@@ -5,7 +5,7 @@
       <% when_present(@photo_series_list) do |photo_series_list| %>
         <ul>
           <% photo_series_list.each do |photo_series| %>
-            <li class="duration-200 hover:text-red-800 text-base transform transition-colors" aria-label="<%= photo_series.title %>">
+            <li class="link" aria-label="<%= photo_series.title %>">
               <%= link_to photo_series.title, series_path(photo_series) %>
             </li>
           <% end %>
@@ -20,8 +20,12 @@
       <% when_present(@recording_list) do |recording_list| %>
         <ul>
           <% recording_list.each do |recording| %>
-            <li class="duration-200 hover:text-red-800 text-base transform transition-colors" aria-label="<%= recording.title %>">
-              <%= link_to recording.title, recording.location %>
+            <li aria-label="<%= recording.title %>">
+              <% if recording.location.empty? %>
+                <p class="text-neutral-500"><%= recording.title %></p>
+              <% else %>
+                <%= link_to recording.title, recording.location, class: "link" %>
+              <% end %>
             </li>
           <% end %>
         </ul> 
