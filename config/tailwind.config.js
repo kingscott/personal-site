@@ -9,8 +9,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        nudge: 'wiggle 2s ease-in-out 2',
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+      maxWidth: {
+        '8xl': '90rem',
+      },
+      screens: {
+        xs: '375px', // Support for iPhone SE screen size 
       },
     },
   },
