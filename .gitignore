@@ -1,8 +1,8 @@
-.DS_Store
+node_modules
 
-log/
-config/master.key
-tmp/
+/.cache
+/build
 .env
-cert.pem
-.idea/
+.dev.vars
+
+.wrangler
