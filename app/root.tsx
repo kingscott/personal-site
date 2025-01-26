@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { LinksFunction } from "@remix-run/cloudflare";
 import {
   Link,
@@ -24,6 +25,8 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const [navOpen, setNavOpen] = useState(false);
+
   return (
     <html lang="en">
       <head>
@@ -33,9 +36,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <header className="container container fixed h-20 mx-auto top-0 z-50">
+        <header className="fixed left-0 top-0 w-full">
           <div className="bg-neutral-100 flex items-center justify-between opacity-90 relative">
-            <div className="ml-4">
+            <div>
               <img
                 className="h-16"
                 alt="Scott King logo"
@@ -45,20 +48,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="md:hidden xs:px-4 mr-4">
               <button
                 className="flex font-medium group/menu hover:bg-neutral-200 items-center px-4 py-2 ring-red-400 ring-1 rounded-full shadow-lg shadow-neutral-800/4 text-sm text-neutral-800"
-                data-action="click->menu#toggle"
+                onClick={() => setNavOpen(!navOpen)}
               >
                 Menu
               </button>
             </div>
             <nav
-              className="fixed inset-x-4 invisible md:block md:container md:visible md:relative md:top-0 origin-top top-20 z-0"
-              data-menu-target="navmenu"
+              className={`inset-x-4 ${
+                navOpen ? "visible" : "invisible"
+              } md:block md:visible md:relative md:top-0 origin-top top-20 z-0`}
               aria-label="Main menu"
               role="navigation"
             >
               <ul
-                className="bg-neutral-200 flex flex-col opacity-0 p-4 rounded-md md:bg-neutral-100 md:flex md:flex-row md:justify-end md:mr-4 md:opacity-100 md:space-x-8 md:space-y-0 md:top-0 md:visible relative space-y-4 transition-[opacity] ease-in-out duration-500"
-                data-menu-target="mobilemenu"
+                className={`bg-neutral-200 flex flex-col ${
+                  navOpen ? "" : "opacity-0"
+                } p-4 rounded-md md:bg-neutral-100 md:flex md:flex-row md:justify-end md:mr-4 md:opacity-100 md:space-x-8 md:space-y-0 md:top-0 md:visible relative space-y-4 transition-[opacity] ease-in-out duration-500`}
               >
                 <li
                   className="duration-200 flex hover:text-red-800 justify-center text-base transform transition-colors"
@@ -90,9 +95,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </nav>
           </div>
         </header>
-        <main className="container flex xs:justify-center md:justify-start max-w-4xl mt-28 mx-auto px-5 xl:max-w-8xl">
-          {children}
-        </main>
+        <main className="flex pt-20 px-8">{children}</main>
         <ScrollRestoration />
         <Scripts />
       </body>
