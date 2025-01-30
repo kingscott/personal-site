@@ -81,7 +81,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   className="duration-200 flex hover:text-red-800 justify-center text-base transform transition-colors"
                   aria-label="Scott's creative work"
                 >
-                  <Link to="/series">Creative Work</Link>
+                  <Link to="/projects">Creative Work</Link>
                 </li>
                 <li
                   className="duration-200 flex hover:text-red-800 justify-center text-base transform transition-colors"
