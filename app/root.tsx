@@ -54,7 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </button>
             </div>
             <nav
-              className={`inset-x-4 ${
+              className={`inset-x-4 fixed ${
                 navOpen ? "visible" : "invisible"
               } md:block md:visible md:relative md:top-0 origin-top top-20 z-0`}
               aria-label="Main menu"
