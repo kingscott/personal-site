@@ -18,7 +18,7 @@ export default function Projects() {
             <li aria-label="u00dok_1">
               <Link
                 className="duration-200 hover:text-red-800 transform transition-colors underline"
-                to=""
+                to="/projects/u00dok_1"
               >
                 {`u00dok_1`}
               </Link>
