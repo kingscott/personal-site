@@ -26,7 +26,7 @@ export default function Projects() {
             <li aria-label="Waterloo Regional Space Program">
               <Link
                 className="duration-200 hover:text-red-800 transform transition-colors underline"
-                to=""
+                to="/projects/wrsp"
               >
                 {`Waterloo Regional Space Program`}
               </Link>
@@ -34,7 +34,7 @@ export default function Projects() {
             <li aria-label="Painting Saskatchewan">
               <Link
                 className="duration-200 hover:text-red-800 transform transition-colors underline"
-                to=""
+                to="/projects/sask"
               >
                 {`Painting Saskatchewan`}
               </Link>
@@ -42,7 +42,7 @@ export default function Projects() {
             <li aria-label="British Columbia by Train">
               <Link
                 className="duration-200 hover:text-red-800 transform transition-colors underline"
-                to=""
+                to="/projects/bc_train"
               >
                 {`British Columbia by Train`}
               </Link>
@@ -50,15 +50,15 @@ export default function Projects() {
             <li aria-label="Barry Lorne symbols">
               <Link
                 className="duration-200 hover:text-red-800 transform transition-colors underline"
-                to=""
+                to="/projects/lorne_details"
               >
-                {`Barry Lorne: Symbols`}
+                {`Barry Lorne: Details`}
               </Link>
             </li>
             <li aria-label="Barry Lorne paintings">
               <Link
                 className="duration-200 hover:text-red-800 transform transition-colors underline"
-                to=""
+                to="/projects/lorne_paintings"
               >
                 {`Barry Lorne: Paintings`}
               </Link>
