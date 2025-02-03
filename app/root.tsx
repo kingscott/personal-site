@@ -28,7 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
