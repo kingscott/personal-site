@@ -63,6 +63,14 @@ export default function Projects() {
                 {`Barry Lorne: Paintings`}
               </Link>
             </li>
+            <li aria-label="Work from hell">
+              <Link
+                className="duration-200 hover:text-red-800 transform transition-colors underline"
+                to="/projects/wfh"
+              >
+                {`WFH: Work From Hell`}
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
