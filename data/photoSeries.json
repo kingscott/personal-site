@@ -204,6 +204,24 @@
     "title": "u00dok_1",
     "year": "2019"
   },
+  "wfh": {
+    "images": [
+      "20250203_wfh_0001_sk.jpg",
+      "20250203_wfh_0002_sk.jpg",
+      "20250121_wfh_0003_sk.jpg",
+      "20250121_wfh_0004_sk.jpg",
+      "20250121_wfh_0005_sk.jpg",
+      "20250121_wfh_0006_sk.jpg",
+      "20250121_wfh_0007_sk.jpg",
+      "20250121_wfh_0008_sk.jpg",
+      "20250121_wfh_0009_sk.jpg",
+      "20250121_wfh_0010_sk.jpg",
+      "20250203_wfh_0011_sk.jpg"
+    ],
+    "imagesFolderPath": "wfh",
+    "title": "WFH: Work From Hell",
+    "year": "2025"
+  },
   "wrsp": {
     "images": [
       "20190422-wrsp-0001-sk.jpg",
