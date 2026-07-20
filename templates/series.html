@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  <div class="flex mb-4">
+    <p class="font-bold mr-1">{{ page.title }}</p>
+    <p class="mr-1">({{ page.extra.year }})</p>
+  </div>
+  <div class="flex flex-wrap gap-4 justify-center md:gap-8 w-full">
+    {% for asset in page.assets | sort %}
+      {% if asset is matching("[.](jpg|jpeg|png)$") %}
+        {% set thumb = resize_image(path=asset, width=500, op="fit_width", format="webp", quality=80) %}
+        <img
+          alt="{{ asset | split(pat='/') | last }}"
+          class="cursor-pointer h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-52 lg:w-52 object-cover"
+          loading="lazy"
+          src="{{ thumb.url }}"
+          data-full="{{ get_url(path=asset) }}"
+        />
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<dialog id="lightbox" class="backdrop:bg-neutral-900/80 bg-transparent m-auto max-h-[95vh] max-w-[95vw] outline-none">
+  <img id="lightbox-img" class="max-h-[90vh] max-w-[90vw] object-contain" alt="" />
+</dialog>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const thumbs = [...document.querySelectorAll("img[data-full]")];
+  let current = 0;
+
+  const show = (i) => {
+    current = (i + thumbs.length) % thumbs.length;
+    lightboxImg.src = thumbs[current].dataset.full;
+    lightboxImg.alt = thumbs[current].alt;
+  };
+
+  thumbs.forEach((thumb, i) => {
+    thumb.addEventListener("click", () => {
+      show(i);
+      lightbox.showModal();
+    });
+  });
+
+  lightbox.addEventListener("click", () => lightbox.close());
+  lightbox.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") show(current + 1);
+    if (e.key === "ArrowLeft") show(current - 1);
+  });
+</script>
+{% endblock content %}
