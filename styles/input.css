@@ -3,6 +3,11 @@
 @source "../templates";
 @source "../content";
 
+html,
+body {
+  @apply h-full text-neutral-600 w-screen;
+}
+
 .page-content a {
   @apply underline transition-colors duration-200 hover:text-red-800;
 }
