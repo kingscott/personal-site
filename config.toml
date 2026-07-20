@@ -1,0 +1,13 @@
+base_url = "https://kingscott.ca"
+title = "Scott King"
+description = "Scott King's personal site"
+compile_sass = false
+build_search_index = false
+
+# Keep underscores in URLs (e.g. /projects/u00dok_1) instead of slugifying to hyphens
+[slugify]
+paths = "safe"
+
+[link_checker]
+# LinkedIn returns 999 to non-browser requests
+skip_prefixes = ["https://linkedin.com"]

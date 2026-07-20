@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col page-content">
+  <div class="mb-4">
+    <p class="font-bold">Photography</p>
+    <ul>
+      {% for series in section.pages %}
+      <li>
+        <a href="{{ series.permalink | safe }}">{{ series.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {{ section.content | safe }}
+</div>
+{% endblock content %}

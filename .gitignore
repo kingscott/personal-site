@@ -1,9 +1,4 @@
-node_modules
+public/
+static/css/main.css
+bin/
 .DS_Store
-
-/.cache
-/build
-.env
-.dev.vars
-
-.wrangler
