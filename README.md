@@ -6,10 +6,11 @@ hosted on [nearlyfreespeech.net](https://www.nearlyfreespeech.net/).
 
 ## Local development
 
-Requires `zola` and `tailwindcss` (v4) on your PATH. On NixOS:
+Requires `zola` and `tailwindcss` (v4) on your PATH. With nix (Linux or macOS):
 
 ```sh
-nix-shell -p zola tailwindcss_4 --run "make serve"
+nix develop        # shell with zola, tailwindcss, make
+make serve
 ```
 
 - `make serve` — build CSS and run `zola serve` with live reload

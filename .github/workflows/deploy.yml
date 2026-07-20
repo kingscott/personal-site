@@ -3,6 +3,7 @@ name: Deploy to nearlyfreespeech.net
 on:
   push:
     branches: [main]
+  pull_request:
 
 env:
   ZOLA_VERSION: 0.22.1
@@ -27,7 +28,11 @@ jobs:
       - name: Build site
         run: make build
 
+      - name: Check links
+        run: zola check
+
       - name: Deploy to NFSN
+        if: github.event_name == 'push'
         env:
           NFSN_SSH_KEY: ${{ secrets.NFSN_SSH_KEY }}
           NFSN_KNOWN_HOSTS: ${{ secrets.NFSN_KNOWN_HOSTS }}
